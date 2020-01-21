@@ -29,9 +29,9 @@
         return $result;
     }
 
-    public function fetch_array($result)
+    public function fetch_assoc($result)
     {
-        $result = mysqli_fetch_array($result);
+        $result = mysqli_fetch_assoc($result);
 
         return $result;
     }
@@ -48,4 +48,22 @@
 
     $database = new MySqlDatabase();
 
+    // //$result_set = $database->query("SELECT * FROM users WHERE id=1");
+
+    // $connection = mysqli_connect(DB_SERVER,DB_USER, DB_PASSWORD, DB_NAME);
+
+    // $query = "SELECT * FROM users WHERE id=1";
+
+    // $result = mysqli_query($connection, $query);
+
+    // //$found = $database->fetch_assoc($result_set);
+
+    // if($result)
+    // {
+    //  while($row = mysqli_fetch_assoc($result))
+    //     {
+
+    //         printf ("%i (%s)\n", $row["id"], $row["username"]);
+    //     }
+    // }
 ?>

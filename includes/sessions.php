@@ -4,34 +4,39 @@
 
         private $logged_in = false;
         public $user_id;
+        public $username;
 
         function __construct()
-        {
+        {       
             session_start();
             $this->check_logged_in();
         }
 
         private function check_logged_in(){
-            if(isset($_SESSION['user_id'])){
+            if(isset($_SESSION['user_id']) && isset($_SESSION['username'])){
                 $this->user_id = $_SESSION['user_id'];
+                $this->username = $_SESSION['username'];
                 $this->logged_in = true;
             }else{
                 unset($this->user_id);
+                unset($this->username);
                 $this->logged_in = false;
             }
         }
 
         public function is_logged_in(){
-            $this->logged_in;
+
+            return $this->logged_in;
           
         }
 
-        public function login($user)
+        public function create_session($user_id,$username)
         {
-            $this->user_id = $_SESSION['user_id'] = $user;
+            $this->user_id = $_SESSION['user_id'] = $user_id;
+            $this->username = $_SESSION['username'] = $username;
             $this->logged_in = true;
-            
-            return $_SESSION['user_id']; 
+
+            return array('id' => $_SESSION['user_id'],'username' => $_SESSION['username']);
         }
 
         public function logout()

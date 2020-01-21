@@ -13,10 +13,10 @@
 		$username = $_POST['username'];
         $password = $_POST['password'];
         
-        $found_user = $user->user_login($username, $password);
+       // $found_user = $user->user_login($username, $password);
         
         if($found_user){
-            $id = $session->login($username);
+            $id = $session->create_session($username);
             
             if($id){
                 header('Location: index.php');	
